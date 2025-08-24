@@ -2,14 +2,14 @@ apiVersion: v1
 entries:
   delivery-app:
   - apiVersion: v2
-    appVersion: 685aef4d0a351e2e8945dd7871f8d820850bce05
-    created: "2025-08-24T16:51:52.235765518Z"
+    appVersion: f2899172efc4a6effb509e47fbbd57ef5dc21875
+    created: "2025-08-24T16:53:26.183374742Z"
     dependencies:
     - name: db
       repository: file://charts/db
       version: 0.1.1
     description: Chart para la aplicación de gestión de pedidos (app + bd)
-    digest: 2503617169441d5272fd63e7e9bde184f7914d920cde3b263a9916a8b2d09959
+    digest: 8a3e68a9a6c7b93cda6912e866beec5be14e7285f83993bed4a765f6a43d4e3a
     name: delivery-app
     type: application
     urls:
@@ -17,7 +17,7 @@ entries:
     version: 0.1.12
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.235361898Z"
+    created: "2025-08-24T16:53:26.182891891Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -31,7 +31,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.234903425Z"
+    created: "2025-08-24T16:53:26.182403911Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -45,7 +45,7 @@ entries:
     version: 0.1.10
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.237674132Z"
+    created: "2025-08-24T16:53:26.185835923Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -59,7 +59,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.23706223Z"
+    created: "2025-08-24T16:53:26.184905727Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -73,7 +73,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.23661072Z"
+    created: "2025-08-24T16:53:26.184353948Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -87,7 +87,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.236217479Z"
+    created: "2025-08-24T16:53:26.183818149Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -101,7 +101,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-24T16:51:52.234434512Z"
+    created: "2025-08-24T16:53:26.181914878Z"
     dependencies:
     - name: db
       repository: file://charts/db
@@ -113,4 +113,4 @@ entries:
     urls:
     - https://andresosa21.github.io/helm_delivery-app/delivery-app-0.1.1.tgz
     version: 0.1.1
-generated: "2025-08-24T16:51:52.233712482Z"
+generated: "2025-08-24T16:53:26.181234469Z"
