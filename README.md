@@ -60,7 +60,9 @@ El chart incluye soporte para Ingress, el cual se puede habilitar y configurar m
                 pathType: Prefix
         tls: []
 
-URL: 192.212.145.158/delivery/users
+URL ingress frontend: 192.212.145.158/delivery/users
+URL ingress backend: 192.212.145.158/delivery/api
+
 ### NOTA: La API solo se conecta con /users.
 
 - `ingress.enabled`: habilita o deshabilita el Ingress.
