@@ -1,5 +1,7 @@
 # helm_delivery-app
 
+## hecho por: Andrea Sosa, David Medina, Samuel Rodriguez
+
 Repositorio Helm para *delivery-app*, una aplicación de gestión de pedidos que incluye la aplicación principal y una base de datos como dependencia.
 
 ## NOTA: Los archivos .tgz se encuentran en la rama gh-pages.
