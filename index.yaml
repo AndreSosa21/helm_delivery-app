@@ -3,27 +3,41 @@ entries:
   db:
   - apiVersion: v2
     appVersion: "8.0"
-    created: "2025-08-23T00:58:21.0000022-05:00"
+    created: "2025-08-24T07:48:35.6533727-05:00"
     description: Subchart para la base de datos MySQL de delivery
     digest: c03e85806ebb39c44032b0491b7f40738a223732e3df1deae364b674f22b5c94
     name: db
     type: application
     urls:
-    - https://andresosa21.github.io/chartsHelm-delivery-app/db-0.1.1.tgz
+    - https://andresosa21.github.io/helm_delivery-app/db-0.1.1.tgz
     version: 0.1.1
   delivery-app:
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2025-08-23T00:58:21.0062478-05:00"
+    created: "2025-08-24T07:48:35.6575934-05:00"
     dependencies:
     - name: db
-      repository: https://andresosa21.github.io/chartsHelm-delivery-app/
+      repository: file://charts/db
+      version: 0.1.1
+    description: Chart para la aplicación de gestión de pedidos (app + bd)
+    digest: adff36806c6efaee31ffd881f7323172918b7fe6897909f470d27e90456626e9
+    name: delivery-app
+    type: application
+    urls:
+    - https://andresosa21.github.io/helm_delivery-app/_dist/delivery-app-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 2.5.0
+    created: "2025-08-24T07:48:35.6544338-05:00"
+    dependencies:
+    - name: db
+      repository: file://charts/db
       version: 0.1.1
     description: Chart para la aplicación de gestión de pedidos (app + bd)
     digest: ac48a33c9fb285089cc7d226e336bf3ba76d412eaea6937fa1c33cf505cf82e5
     name: delivery-app
     type: application
     urls:
-    - https://andresosa21.github.io/chartsHelm-delivery-app/delivery-app-0.1.1.tgz
+    - https://andresosa21.github.io/helm_delivery-app/delivery-app-0.1.1.tgz
     version: 0.1.1
-generated: "2025-08-23T00:58:20.9945925-05:00"
+generated: "2025-08-24T07:48:35.6478681-05:00"
