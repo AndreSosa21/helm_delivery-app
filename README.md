@@ -4,7 +4,7 @@
 
 Repositorio Helm para *delivery-app*, una aplicación de gestión de pedidos que incluye la aplicación principal y una base de datos como dependencia.
 
-## NOTA: Los archivos .tgz se encuentran en la rama gh-pages.
+## NOTA: Los archivos `.tgz` se encuentran en la rama gh-pages.
 
 ## Antes de instalar el chart asegúrate de tener:
 
@@ -15,8 +15,8 @@ Repositorio Helm para *delivery-app*, una aplicación de gestión de pedidos que
 
 ## Contenido
 
-En la carpeta _dist se encuentran los paquetes (.tgz) de las distintas versiones del chart y un index.yaml generado automáticamente para que Helm pueda reconocer el repositorio.  
-El index.yaml en el directorio raíz es el archivo que GitHub Pages sirve públicamente en:
+En la carpeta _dist se encuentran los paquetes (`.tgz`) de las distintas versiones del chart y un `index.yaml` generado automáticamente para que Helm pueda reconocer el repositorio.  
+El `index.yaml` en el directorio raíz es el archivo que GitHub Pages sirve públicamente en:
 
 https://andresosa21.github.io/helm_delivery-app/index.yaml
 
@@ -30,26 +30,27 @@ https://andresosa21.github.io/helm_delivery-app/index.yaml
 
 2. *Verificar versiones disponibles*
 
-helm search repo delivery-app
+   ```bash
+   helm search repo delivery-app
 
-3. *Instalar la aplicación*
+4. *Instalar la aplicación*
 
    ```bash
    helm install my-delivery delivery-app/delivery-app --version 0.1.4
 
-4. *Actualizar la release a una nueva versión*
+5. *Actualizar la release a una nueva versión*
 
    ```bash
    helm upgrade my-delivery delivery-app/delivery-app --version 0.1.5
 
-5. *Desinstalar*
+6. *Desinstalar*
 
    ```bash
    helm uninstall my-delivery
 
 ## Configuración de Ingress
 
-El chart incluye soporte para Ingress, el cual se puede habilitar y configurar mediante los valores en values.yaml:
+El chart incluye soporte para Ingress, el cual se puede habilitar y configurar mediante los valores en `values.yaml`:
 
       ingress:
         enabled: true
@@ -63,6 +64,7 @@ El chart incluye soporte para Ingress, el cual se puede habilitar y configurar m
         tls: []
 
 URL ingress frontend: 192.212.145.158/delivery/users
+
 URL ingress backend: 192.212.145.158/delivery/api
 
 ### NOTA: La API solo se conecta con /users.
@@ -115,6 +117,6 @@ en donde:
 
 `targetRevision`: define la versión del chart a usar.
 
-Con automated: true, ArgoCD sincroniza automáticamente la versión especificada del chart con el cluster.
+Con `automated: true`, ArgoCD sincroniza automáticamente la versión especificada del chart con el cluster.
 
-Si se sube un nuevo .tgz al repo y se actualiza el index.yaml, basta con cambiar targetRevision en el Application para que ArgoCD lo despliegue.
+Si se sube un nuevo `.tgz` al repo y se actualiza el `index.yaml`, basta con cambiar `targetRevision` en el Application para que ArgoCD lo despliegue.
