@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  delivery-app:
+  - apiVersion: v2
+    appVersion: 7ac37662c900c4af89751a84fbc7ea583fa39937
+    created: "2025-08-24T16:18:14.41460267Z"
+    dependencies:
+    - name: db
+      repository: file://charts/db
+      version: 0.1.1
+    description: Chart para la aplicación de gestión de pedidos (app + bd)
+    digest: f68361b427c703bd94aba0e9996e179b578ff065b63b13fea4c0c7cdff89aff8
+    name: delivery-app
+    type: application
+    urls:
+    - https://andresosa21.github.io/helm_delivery-app/delivery-app-0.1.12.tgz
+    version: 0.1.12
+generated: "2025-08-24T16:18:14.413929282Z"
