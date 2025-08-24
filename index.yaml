@@ -24,7 +24,7 @@ entries:
     name: delivery-app
     type: application
     urls:
-    - https://andresosa21.github.io/helm_delivery-app/_dist/delivery-app-0.1.6.tgz
+    - https://andresosa21.github.io/helm_delivery-app/delivery-app-0.1.6.tgz
     version: 0.1.6
   - apiVersion: v2
     appVersion: 2.5.0
