@@ -4,6 +4,13 @@ Repositorio Helm para *delivery-app*, una aplicación de gestión de pedidos que
 
 ## NOTA: Los archivos .tgz se encuentran en la rama gh-pages.
 
+## Antes de instalar el chart asegúrate de tener:
+
+- Un cluster **Kubernetes** en funcionamiento (v1.22+ recomendado).
+- **Helm** instalado en tu máquina local (v3.8+).
+- (Opcional) **ArgoCD** instalado en el cluster para despliegues GitOps.
+- Un **Ingress Controller** instalado (por ejemplo, NGINX Ingress Controller) si deseas exponer la aplicación vía HTTP/HTTPS.
+
 ## Contenido
 
 En la carpeta _dist se encuentran los paquetes (.tgz) de las distintas versiones del chart y un index.yaml generado automáticamente para que Helm pueda reconocer el repositorio.  
@@ -25,46 +32,84 @@ helm search repo delivery-app
 
 3. *Instalar la aplicación*
 
-helm install my-delivery delivery-app/delivery-app --version 0.1.4
+   ```bash
+   helm install my-delivery delivery-app/delivery-app --version 0.1.4
 
 4. *Actualizar la release a una nueva versión*
 
-helm upgrade my-delivery delivery-app/delivery-app --version 0.1.5
+   ```bash
+   helm upgrade my-delivery delivery-app/delivery-app --version 0.1.5
 
 5. *Desinstalar*
 
-helm uninstall my-delivery
+   ```bash
+   helm uninstall my-delivery
+
+## Configuración de Ingress
+
+El chart incluye soporte para Ingress, el cual se puede habilitar y configurar mediante los valores en values.yaml:
+
+      ingress:
+        enabled: true
+        className: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /
+        hosts:
+            paths:
+              - path: /
+                pathType: Prefix
+        tls: []
+
+URL: 192.212.145.158/delivery/users
+### NOTA: La API solo se conecta con /users.
+
+- `ingress.enabled`: habilita o deshabilita el Ingress.
+- `ingress.className`: define el controlador de ingress (por ejemplo, nginx).
+- `ingress.hosts`: lista de hosts (dominios o subdominios) que apuntarán al servicio de la app.
+- `ingress.tls`: configuración TLS para HTTPS (requiere un certificado válido, ej. con cert-manager).
+
+Para instalar con un dominio personalizado, puedes usar:
+
+      ```bash
+      helm install my-delivery delivery-app/delivery-app \
+        --set ingress.enabled=true \
+        --set ingress.hosts[0].host=delivery.example.com \
+        --set ingress.hosts[0].paths[0].path=/
+
+Una vez aplicado, se accederá a la aplicación en el dominio definido.
 
 ## Sincronización con ArgoCD
 
 1. *Registrar el repo en ArgoCD*
 
-argocd repo add https://andresosa21.github.io/helm_delivery-app --type helm
+   ```bash
+   argocd repo add https://andresosa21.github.io/helm_delivery-app --type helm
 
 2. *Definir una aplicación en ArgoCD (ejemplo Application manifest)*
 
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: delivery-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://andresosa21.github.io/helm_delivery-app
-    chart: delivery-app
-    targetRevision: 0.1.4   # versión del chart a sincronizar
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: delivery
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+   ```bash
+   apiVersion: argoproj.io/v1alpha1
+   kind: Application
+   metadata:
+     name: delivery-app
+     namespace: argocd
+   spec:
+     project: default
+     source:
+       repoURL: https://andresosa21.github.io/helm_delivery-app
+       chart: delivery-app
+       targetRevision: 0.1.4   # versión del chart a sincronizar
+     destination:
+       server: https://kubernetes.default.svc
+       namespace: delivery
+     syncPolicy:
+       automated:
+         prune: true
+         selfHeal: true
 
 en donde:
 
-targetRevision: define la versión del chart a usar.
+`targetRevision`: define la versión del chart a usar.
 
 Con automated: true, ArgoCD sincroniza automáticamente la versión especificada del chart con el cluster.
 
